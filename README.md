@@ -71,7 +71,7 @@ You are very welcome to contribute to the project.
 | Status             | Description
 | :----------------: | ----------------
 | :white_check_mark: | Create basic documentation
-| :soon:             | Create development enviroment
+| :white_check_mark: | Create development enviroment
 | :soon:             | Create minimal viable prototype
 
 ##### Version 0.1.0
