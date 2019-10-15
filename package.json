@@ -1,0 +1,28 @@
+{
+  "name": "hyperspace-3d",
+  "version": "0.0.1",
+  "description": "Javascript library for activating the z-axis and start scrolling in 3D",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/martinlundin/hyperspace-3d.git"
+  },
+  "keywords": [
+    "hyperspace",
+    "3d",
+    "z-axis",
+    "scroll",
+    "scroller",
+    "dimension",
+    "immersive"
+  ],
+  "author": "Martin Lundin <martin@fokusiv.com>",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/martinlundin/hyperspace-3d/issues"
+  },
+  "homepage": "https://github.com/martinlundin/hyperspace-3d#readme"
+}
