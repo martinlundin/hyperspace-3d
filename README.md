@@ -3,7 +3,7 @@
 
 Well, with this library we have taken care of the calculations to make it abit easier for you.
 
-**Hyperspace 3D** adds another dimension to your site. It simply enables for scrolling on the z-axis, making for an immersive experience. Instead of going down along the page we go into it.
+**Hyperspace 3D** adds another dimension to your site. It simply enables for scrolling on the z-axis, making for an immersive experience. Instead of going down along the page like normal, we go into it.
 
 **Accesibility is key.** This projects does NOT use any WebGL or canvas. This is basic HTML, CSS and JS. All content will be indexable by the search engines and screen readers.
 
