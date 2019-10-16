@@ -4,4 +4,5 @@
 .cache
 npm-debug.log
 
-dist
+.eslintrc.js
+demo
