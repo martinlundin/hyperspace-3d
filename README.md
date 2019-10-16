@@ -1,4 +1,4 @@
-# Hyperspace 3D (Beta)
+# Hyperspace 3D (Alpha)
 *"Traveling through hyperspace ain't like dusting crops, boy! Without precise calculations we could fly right through a star or bounce too close to a supernova, and that'd end your trip real quick, wouldn't it?"*
 
 Well, with this library we have taken care of the calculations to make it abit easier for you.
@@ -8,6 +8,8 @@ Well, with this library we have taken care of the calculations to make it abit e
 **Accesibility is key.** This projects does NOT use any WebGL or canvas. This is basic HTML, CSS and JS. All content will be indexable by the search engines and screen readers.
 
 ## :scroll: Instructions
+**The project is currently in Alpha phase, report any bugs you might find. Please don't use in production yet, unless you keep up with the development.**
+
 **Install:** 
 Add hyperspace-3d to your project. Choose one of the following.
 - `yarn add hyperspace-3d`<br/>
@@ -19,25 +21,16 @@ Javascript
 import Hyperspace3D from 'hyperspace-3d'
 
 const options = {
-    space: 100,
-    snap: {
-        enable: true,
-        front: 10,
-        back: 5,
-    },
-    blur: {
-        enable: true,
-        amount: 40,
-    }
+
 }
 
 Hyperspace3D(options)
 ```
 HTML
 ```
-<main class="hyperspace">
-    <div class="hyperspaceContainer">
-        <div class="hyperspaceScene">
+<div id="hs">
+    <div hs="container">
+        <div hs="scene">
             <section>
                 <h1>Custom HTML</h1>
                 <p>Your own HTML goes inside the section tags.</p>
@@ -45,9 +38,12 @@ HTML
             <section>
                 <p>Add as many sections as you want.</p>
             </section>
+            <section>
+                <img src="https://loremflickr.com/320/240" />
+            </section>
         </div>
     </div>
-</main>
+</div>
 ```
 
 ---
@@ -64,28 +60,27 @@ You are very welcome to contribute to the project.
 ### :snail: Roadmap
 | Version    | Estimated release | Status
 | :--------: | ----------------- | :----:
-| 0.0.1      | 2019-10-16        | :soon:
-| 0.1.0      | 2019-10-20        | :x:
+| 0.0.1      | 2019-10-16        | :white_check_mark:
+| 0.1.0      | 2019-10-20        | :soon:
 
 #### Feature status
 
+##### Version 0.1.0
+| Status             | Description
+| :----------------: | ----------------
+| :soon:             | Add space option functionality
+| :soon:             | Add blur option functionality
+| :soon:             | Add snap option functionality
+| :soon:             | Add demo
+| :soon:             | Add CDN hosting
+
+---
+
+#### Previous version features
 ##### Version 0.0.1
 | Status             | Description
 | :----------------: | ----------------
 | :white_check_mark: | Create basic documentation
 | :white_check_mark: | Create development enviroment
-| :soon:             | Create minimal viable prototype
-
-##### Version 0.1.0
-| Status             | Description
-| :----------------: | ----------------
-| :x:                | Add options functionality
-| :x:                | Add space option functionality
-| :x:                | Add blur option functionality
-| :x:                | Add snap option functionality
-| :x:                | Add demo
-| :x:                | Add CDN hosting
-
----
-
-#### Previous version features
+| :white_check_mark: | Create minimal viable prototype
+| :white_check_mark: | Add option & config functionality

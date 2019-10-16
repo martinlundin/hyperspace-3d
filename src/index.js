@@ -5,7 +5,6 @@ const Hyperspace3D = (options, selector = '#hs') => {
   // Use options and build config
   const defaultOptions = {
     space: {
-      amount: 100,
       extra: 'auto',
     },
     bound: {
@@ -13,6 +12,9 @@ const Hyperspace3D = (options, selector = '#hs') => {
     },
   };
   const config = { ...defaultOptions, ...options };
+
+  // Temporary hardcoded configs to user input errors
+  config.space.amount = 100;
 
   // Constants & variables
   const element = document.querySelector(selector);
