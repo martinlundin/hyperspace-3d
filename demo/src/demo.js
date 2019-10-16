@@ -1,7 +1,9 @@
-import Hyperspace3D from './../../src/index.js'; 
+import Hyperspace3D from '../../src/index.js';
 
-const options = {
-    
-}
+const config = {
+  space: 80,
+};
 
-Hyperspace3D(options);
+Hyperspace3D(config);
+
+Hyperspace3D(config, '#hs2');
