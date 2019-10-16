@@ -4,8 +4,12 @@ import createStyle from './style';
 const Hyperspace3D = (options, selector = '#hs') => {
   // Use options and build config
   const defaultOptions = {
-    space: 100,
-    startYOffset: 75,
+    space: {
+      amount: 100,
+    },
+    bound: {
+      padding: 100,
+    },
   };
   const config = { ...defaultOptions, ...options };
 
@@ -19,9 +23,26 @@ const Hyperspace3D = (options, selector = '#hs') => {
     const bottomOfWindow = window.pageYOffset + windowHeight;
     const topOfWindow = window.pageYOffset;
 
-    if (viewBound.top <= bottomOfWindow && viewBound.bottom >= topOfWindow) {
-      console.log('show ', selector);
+    if (
+      viewBound.top - config.bound.padding <= bottomOfWindow
+      && viewBound.bottom + config.bound.padding >= topOfWindow
+    ) {
+      updateScene();
     }
+  };
+
+  const updateScene = () => {
+    const scrolledPx = window.pageYOffset + windowHeight - element.offsetTop;
+    const scrolledVh = scrolledPx / windowHeight;
+    const offsetValue = scrolledVh * 100 - 100;
+
+    const cameraZ = scrolledVh * config.space.amount - config.space.amount;
+    const offsetY = offsetValue + config.space.amount <= config.space.amount
+      ? offsetValue
+      : 0;
+
+    element.style.setProperty('--cameraZ', cameraZ);
+    element.style.setProperty('--offsetY', offsetY);
   };
 
   // Actions
@@ -34,6 +55,7 @@ const Hyperspace3D = (options, selector = '#hs') => {
   // Listen on events that we need to recalculate from
   window.addEventListener('DOMContentLoaded', () => {
     viewBound = calcViewBound(element);
+    updateScene();
   });
   window.addEventListener('resize', () => {
     viewBound = calcViewBound(element);

@@ -10,20 +10,24 @@ const createElementStyle = (selector, config) => {
   );
 
   Array.from(children).forEach((child, index) => {
-    child.style.transform = `translateZ(calc(${index} * -${config.space}vh))`;
+    child.style.transform = `translateZ(calc(${index} * -${config.space.amount}vh))`;
     child.style.zIndex = 1000 - index;
   });
 
-  element.style.height = `calc(${children.length} * ${config.space}vh)`;
+  const height = children.length * config.space.amount;
+  element.style.height = `calc(${height}vh + 100vh)`;
 };
 
 const createCSS = (selector) => {
   const css = `
+    ${selector} *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     ${selector}{
-        --yOffset: -75;
-        --parallax: -50;
-        --zCamera: 0;
-        --blur: 3;
+        --offsetY: -100;
+        --cameraZ: 0;
 
         opacity:1;
         transition:opacity 0.1s;
@@ -33,9 +37,8 @@ const createCSS = (selector) => {
         height: 100%;
         width: 100%;
         position: fixed;
-        bottom: calc(var(--yOffset) * 1%);
+        bottom: calc(var(--offsetY) * 1%);
         left: 0;
-        top: 0;
         perspective: 100vh;
         perspective-origin: 50%;
         will-change: perspective-origin;
@@ -48,7 +51,7 @@ const createCSS = (selector) => {
         position: absolute;
         top: 0;
         transform-style: preserve-3d;
-        transform: translateZ(calc(var(--zCamera) * 1vh));
+        transform: translateZ(calc(var(--cameraZ) * 1vh));
         will-change: transform;
     }
 
@@ -58,6 +61,12 @@ const createCSS = (selector) => {
         position: absolute;
         top: 0;
         left: 0;   
+        border:5px solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background:rgba(0,0,0,0.2)
     }
   `;
 
