@@ -15,7 +15,8 @@ const createElementStyle = (selector, config) => {
   });
 
   const height = children.length * config.space.amount;
-  element.style.height = `calc(${height}vh + 100vh)`;
+  const extra = config.space.extra ? `${config.space.amount}` : '0';
+  element.style.height = `calc(${height}vh + ${extra}vh)`;
 };
 
 const createCSS = (selector) => {

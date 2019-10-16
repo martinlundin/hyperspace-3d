@@ -6,6 +6,7 @@ const Hyperspace3D = (options, selector = '#hs') => {
   const defaultOptions = {
     space: {
       amount: 100,
+      extra: 'auto',
     },
     bound: {
       padding: 100,
@@ -45,7 +46,19 @@ const Hyperspace3D = (options, selector = '#hs') => {
     element.style.setProperty('--offsetY', offsetY);
   };
 
+  const handleConfigAuto = () => {
+    if (config.space.extra === 'auto') {
+      // Check if element is last on page
+      if (element.offsetHeight + element.offsetTop >= document.body.offsetHeight) {
+        config.space.extra = false;
+      } else {
+        config.space.extra = true;
+      }
+    }
+  };
+
   // Actions
+  handleConfigAuto();
   createStyle(selector, config);
 
   // Listen on scroll and dispatch one event to get everything loaded properly
