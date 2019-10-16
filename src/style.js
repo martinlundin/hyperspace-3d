@@ -17,7 +17,7 @@ const createElementStyle = (selector, config) => {
   element.style.height = `calc(${children.length} * ${config.space}vh)`;
 };
 
-const createCSS = (selector, config) => {
+const createCSS = (selector) => {
   const css = `
     ${selector}{
         --yOffset: -75;

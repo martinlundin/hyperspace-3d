@@ -5,7 +5,7 @@ const Hyperspace3D = (options, selector = '#hs') => {
   // Use options and build config
   const defaultOptions = {
     space: 100,
-    startYOffset: 75
+    startYOffset: 75,
   };
   const config = { ...defaultOptions, ...options };
 
@@ -39,7 +39,7 @@ const Hyperspace3D = (options, selector = '#hs') => {
     viewBound = calcViewBound(element);
     windowHeight = Math.min(
       document.documentElement.clientHeight,
-      window.innerHeight
+      window.innerHeight,
     );
   });
 };
