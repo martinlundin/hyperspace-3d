@@ -30,6 +30,9 @@
   },
   "homepage": "https://github.com/martinlundin/hyperspace-3d#readme",
   "devDependencies": {
+    "eslint": "^6.5.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
     "microbundle": "^0.11.0",
     "parcel-bundler": "^1.12.4"
   }
