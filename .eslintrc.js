@@ -17,6 +17,7 @@ module.exports = {
   },
   rules: {
     "no-use-before-define": 0,
-    "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["element", "child"] }]
+    "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["element", "child"] }],
+    "max-len": ["error", { "code": 120 }],
   },
 };
