@@ -1,4 +1,4 @@
-import Hyperspace3D from '../../src/index.js';
+import Hyperspace3D from '../../src/index';
 
 Hyperspace3D();
 
