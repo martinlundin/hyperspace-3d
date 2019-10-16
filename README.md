@@ -41,7 +41,7 @@ HTML
             <section>
                 <h1>Custom HTML</h1>
                 <p>Your own HTML goes inside the section tags.</p>
-            <section>
+            </section>
             <section>
                 <p>Add as many sections as you want.</p>
             </section>
