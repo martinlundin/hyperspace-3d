@@ -10,16 +10,16 @@ const createElementStyle = (selector, config) => {
   );
 
   Array.from(children).forEach((child, index) => {
-    child.style.transform = `translateZ(calc(${index} * -${config.space.amount}vh))`;
+    child.style.transform = `translateZ(calc(${index} * -100vh))`;
     child.style.zIndex = 1000 - index;
   });
 
-  const height = children.length * config.space.amount;
-  const extra = config.space.extra ? `${config.space.amount}` : '0';
+  const height = children.length * 100;
+  const extra = config.space.extra ? config.space.amount : 0;
   element.style.height = `calc(${height}vh + ${extra}vh)`;
 };
 
-const createCSS = (selector) => {
+const createCSS = (selector, config) => {
   const css = `
     ${selector} *{
       margin: 0;
@@ -40,7 +40,7 @@ const createCSS = (selector) => {
         position: fixed;
         bottom: calc(var(--offsetY) * 1%);
         left: 0;
-        perspective: 100vh;
+        perspective: ${config.space.amount}vh;
         perspective-origin: 50%;
         will-change: perspective-origin;
         transform: translate3d(0, 0, 0);

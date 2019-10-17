@@ -68,7 +68,7 @@ You are very welcome to contribute to the project.
 ##### Version 0.1.0
 | Status             | Description
 | :----------------: | ----------------
-| :soon:             | Add space option functionality
+| :white_check_mark: | Add space option functionality
 | :soon:             | Add blur option functionality
 | :soon:             | Add snap option functionality
 | :soon:             | Add demo

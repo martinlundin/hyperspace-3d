@@ -5,6 +5,7 @@ const Hyperspace3D = (options, selector = '#hs') => {
   // Use options and build config
   const defaultOptions = {
     space: {
+      amount: 30,
       extra: 'auto',
     },
     bound: {
@@ -12,9 +13,6 @@ const Hyperspace3D = (options, selector = '#hs') => {
     },
   };
   const config = { ...defaultOptions, ...options };
-
-  // Temporary hardcoded configs to user input errors
-  config.space.amount = 100;
 
   // Constants & variables
   const element = document.querySelector(selector);
@@ -35,14 +33,12 @@ const Hyperspace3D = (options, selector = '#hs') => {
   };
 
   const updateScene = () => {
-    const scrolledPx = window.pageYOffset + windowHeight - element.offsetTop;
+    const scrolledPx = window.pageYOffset - element.offsetTop;
     const scrolledVh = scrolledPx / windowHeight;
-    const offsetValue = scrolledVh * 100 - 100;
+    const offsetValue = scrolledVh * 100;
 
-    const cameraZ = scrolledVh * config.space.amount - config.space.amount;
-    const offsetY = offsetValue + config.space.amount <= config.space.amount
-      ? offsetValue
-      : 0;
+    const cameraZ = scrolledVh * 100;
+    const offsetY = offsetValue <= 0 ? offsetValue : 0;
 
     element.style.setProperty('--cameraZ', cameraZ);
     element.style.setProperty('--offsetY', offsetY);
