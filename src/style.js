@@ -11,6 +11,7 @@ const createElementStyle = (selector, config) => {
 
   Array.from(children).forEach((child, index) => {
     child.style.transform = `translateZ(calc(${index} * -100vh))`;
+    child.style.filter = `blur( calc( (${index} * ${config.blur.amount}px) - (var(--blur) * 1px) ) )`;
     child.style.zIndex = 1000 - index;
   });
 

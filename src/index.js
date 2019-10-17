@@ -5,11 +5,15 @@ const Hyperspace3D = (options, selector = '#hs') => {
   // Use options and build config
   const defaultOptions = {
     space: {
-      amount: 30,
+      amount: 100,
       extra: 'auto',
     },
     bound: {
       padding: 100,
+    },
+    blur: {
+      active: true,
+      amount: 10,
     },
   };
   const config = { ...defaultOptions, ...options };
@@ -42,6 +46,11 @@ const Hyperspace3D = (options, selector = '#hs') => {
 
     element.style.setProperty('--cameraZ', cameraZ);
     element.style.setProperty('--offsetY', offsetY);
+
+    if (config.blur.active && config.blur.amount > 0) {
+      const blur = scrolledVh * config.blur.amount;
+      element.style.setProperty('--blur', blur);
+    }
   };
 
   const handleConfigAuto = () => {
