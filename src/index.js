@@ -5,21 +5,29 @@ const Hyperspace3D = (options, selector = '#hs') => {
   // Use options and build config
   const defaultOptions = {
     space: {
-      amount: 100,
-      extra: 'auto',
+      amount: 30, // How much the space between sections are. 1-100
+      extra: 'auto', // Space after last element. 'auto' detect if element is last, then it is false, otherwise true
     },
     bound: {
-      padding: 100,
+      padding: 100, // Padding of bound, in pixels. This is to prevent element sticking if user scrolls away fast
     },
     blur: {
       active: true,
-      amount: 10,
-      hq: true,
-      offset: 0.9,
+      amount: 100, // How much the blur is. 0-inf
+      hq: true, // This solves ClearType pixel problem, makes content hq. Unfortunately it is pretty process intense
+      offset: 0.9, // Offset for when hq kicks in
     },
     opacity: {
       active: true,
-      amount: 0.5,
+      amount: 1, // How much opacity between 0-1
+    },
+    snap: {
+      active: true,
+      bound: {
+        front: 50, // How far infront it will snap to element.
+        back: 5, // How far in the back it will snap back to element.
+      },
+      wait: 50, // Time in ms before snap is executed
     },
   };
   const config = { ...defaultOptions, ...options };
@@ -28,12 +36,13 @@ const Hyperspace3D = (options, selector = '#hs') => {
   const element = document.querySelector(selector);
   let windowHeight = calcWindowHeight();
   let viewBound = calcViewBound(element);
+  const scrollTimeout = [];
+  let snapScrolling = false;
 
   // Declare functions
   const handleScroll = () => {
     const bottomOfWindow = window.pageYOffset + windowHeight;
     const topOfWindow = window.pageYOffset;
-
     if (
       viewBound.top - config.bound.padding <= bottomOfWindow
       && viewBound.bottom + config.bound.padding >= topOfWindow
@@ -53,15 +62,23 @@ const Hyperspace3D = (options, selector = '#hs') => {
     element.style.setProperty('--cameraZ', cameraZ);
     element.style.setProperty('--offsetY', offsetY);
 
+    const blur = scrolledVh * config.blur.amount;
     if (config.blur.active && config.blur.amount > 0) {
-      const blur = scrolledVh * config.blur.amount;
       element.style.setProperty('--blur', blur);
+    }
+    if (config.opacity.active && config.opacity.amount > 0) {
+      const opacity = scrolledVh * config.opacity.amount;
+      element.style.setProperty('--opacity', opacity);
+    }
 
-      if (config.blur.hq === true) {
-        const { children } = element.querySelector(
-          `${selector} > *[hs=container] > *[hs=scene]`,
-        );
-        Array.from(children).forEach((child, index) => {
+    // Do all configs that require element children loop at the same time to boost performance
+    if ((config.blur.active && config.blur.amount > 0 && config.blur.hq === true) || (config.snap.active)) {
+      const { children } = element.querySelector(
+        `${selector} > *[hs=container] > *[hs=scene]`,
+      );
+      Array.from(children).forEach((child, index) => {
+        // Blur HQ
+        if (config.blur.active && config.blur.amount > 0 && config.blur.hq === true) {
           const blurStop = index * (config.blur.amount - config.blur.offset);
           if (blur < blurStop) {
             if (child.style.filter === 'none') {
@@ -70,12 +87,37 @@ const Hyperspace3D = (options, selector = '#hs') => {
           } else {
             child.style.filter = 'none';
           }
-        });
-      }
+        }
+        // Snap to element
+        if (config.snap.active) {
+          const position = index * 100;
+          if (scrollTimeout[index]) clearTimeout(scrollTimeout[index]);
+          if (
+            position - config.snap.bound.front <= cameraZ
+            && position + config.snap.bound.back >= cameraZ
+            && snapScrolling !== true
+          ) {
+            scrollTimeout[index] = setTimeout(() => {
+              scrollToIndex(index);
+            }, config.snap.wait);
+          }
+        }
+      });
     }
-    if (config.opacity.active && config.opacity.amount > 0) {
-      const opacity = scrolledVh * config.opacity.amount;
-      element.style.setProperty('--opacity', opacity);
+  };
+
+  const scrollToIndex = (index) => {
+    const top = element.offsetTop + (windowHeight * index);
+    window.scroll({
+      top,
+      behavior: 'smooth',
+    });
+    if (config.snap.active) {
+      // Prevent activating new snap from itself
+      snapScrolling = true;
+      setTimeout(() => {
+        snapScrolling = false;
+      }, config.snap.wait);
     }
   };
 
