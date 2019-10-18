@@ -71,8 +71,8 @@ You are very welcome to contribute to the project.
 | :white_check_mark: | Add space option functionality
 | :white_check_mark: | Add blur option functionality
 | :white_check_mark: | Add fix for blur pixel bug
-| :soon:             | Add opacity option functionality
-| :soon:             | Add snap option functionality
+| :white_check_mark: | Add opacity option functionality
+| :white_check_mark: | Add snap option functionality
 | :soon:             | Add demo
 | :soon:             | Add CDN hosting
 
