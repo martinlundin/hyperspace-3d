@@ -17,6 +17,10 @@ const Hyperspace3D = (options, selector = '#hs') => {
       hq: true,
       offset: 0.9,
     },
+    opacity: {
+      active: true,
+      amount: 0.5,
+    },
   };
   const config = { ...defaultOptions, ...options };
 
@@ -68,6 +72,10 @@ const Hyperspace3D = (options, selector = '#hs') => {
           }
         });
       }
+    }
+    if (config.opacity.active && config.opacity.amount > 0) {
+      const opacity = scrolledVh * config.opacity.amount;
+      element.style.setProperty('--opacity', opacity);
     }
   };
 
