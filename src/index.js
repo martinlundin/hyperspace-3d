@@ -40,6 +40,17 @@ const Hyperspace3D = (options, selector = '#hs') => {
   let snapScrolling = false;
 
   // Declare functions
+  const handleConfigAuto = () => {
+    if (config.space.extra === 'auto') {
+      // Check if element is last on page
+      if (element.offsetHeight + element.offsetTop >= document.body.offsetHeight) {
+        config.space.extra = false;
+      } else {
+        config.space.extra = true;
+      }
+    }
+  };
+
   const handleScroll = () => {
     const bottomOfWindow = window.pageYOffset + windowHeight;
     const topOfWindow = window.pageYOffset;
@@ -118,17 +129,6 @@ const Hyperspace3D = (options, selector = '#hs') => {
       setTimeout(() => {
         snapScrolling = false;
       }, config.snap.wait);
-    }
-  };
-
-  const handleConfigAuto = () => {
-    if (config.space.extra === 'auto') {
-      // Check if element is last on page
-      if (element.offsetHeight + element.offsetTop >= document.body.offsetHeight) {
-        config.space.extra = false;
-      } else {
-        config.space.extra = true;
-      }
     }
   };
 
