@@ -14,6 +14,8 @@ const Hyperspace3D = (options, selector = '#hs') => {
     blur: {
       active: true,
       amount: 10,
+      hq: true,
+      offset: 0.9,
     },
   };
   const config = { ...defaultOptions, ...options };
@@ -50,6 +52,22 @@ const Hyperspace3D = (options, selector = '#hs') => {
     if (config.blur.active && config.blur.amount > 0) {
       const blur = scrolledVh * config.blur.amount;
       element.style.setProperty('--blur', blur);
+
+      if (config.blur.hq === true) {
+        const { children } = element.querySelector(
+          `${selector} > *[hs=container] > *[hs=scene]`,
+        );
+        Array.from(children).forEach((child, index) => {
+          const blurStop = index * (config.blur.amount - config.blur.offset);
+          if (blur < blurStop) {
+            if (child.style.filter === 'none') {
+              child.style.filter = `blur( calc( (${index} * ${config.blur.amount}px) - (var(--blur) * 1px) ) )`;
+            }
+          } else {
+            child.style.filter = 'none';
+          }
+        });
+      }
     }
   };
 
