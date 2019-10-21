@@ -5,7 +5,7 @@ const Hyperspace3D = (options, selector = '#hs') => {
   // Use options and build config
   const defaultOptions = {
     space: {
-      amount: 30, // How much the space between sections are. 1-100
+      amount: 50, // How much the space between sections are. 1-100
       extra: 'auto', // Space after last element. 'auto' detect if element is last, then it is false, otherwise true
     },
     bound: {
