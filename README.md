@@ -53,7 +53,7 @@ You are very welcome to contribute to the project.
 
 #### Developer installation
 1. Clone this project from git, in terminal run `git clone https://github.com/martinlundin/hyperdrive`
-1. In terminal go to the project root and run `npm install`
+1. In terminal go to the project root and run `npm install` or `yarn install`
 1. To run developer mode with demo `npm run dev` or `yarn dev`
 1. When you are finnished with the new version `npm run build` or `yarn build`
 
@@ -61,10 +61,22 @@ You are very welcome to contribute to the project.
 | Version    | Estimated release | Status
 | :--------: | ----------------- | :----:
 | 0.0.1      | 2019-10-16        | :white_check_mark:
-| 0.1.0      | 2019-10-20        | :soon:
+| 0.1.0      | 2019-10-20        | :white_check_mark:
+| 0.2.0      | 2019-11-01        | :soon:
 
 #### Feature status
 
+##### Version 0.2.0
+| Status             | Description
+| :----------------: | ----------------
+| :x:                | Preformance improvments
+| :x:                | Set final defaultOptions
+| :x:                | Add multiple demos promoting the library
+| :x:                | Add CDN hosting
+
+---
+
+#### Previous version features
 ##### Version 0.1.0
 | Status             | Description
 | :----------------: | ----------------
@@ -72,13 +84,9 @@ You are very welcome to contribute to the project.
 | :white_check_mark: | Add blur option functionality
 | :white_check_mark: | Add fix for blur pixel bug
 | :white_check_mark: | Add opacity option functionality
-| :white_check_mark: | Add snap option functionality
-| :soon:             | Add demo
-| :soon:             | Add CDN hosting
+| :x:                | Add snap option functionality (REMOVED FROM ROADMAP)
+| :white_check_mark: | Add demo in project
 
----
-
-#### Previous version features
 ##### Version 0.0.1
 | Status             | Description
 | :----------------: | ----------------

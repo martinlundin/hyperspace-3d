@@ -13,21 +13,13 @@ const Hyperspace3D = (options, selector = '#hs') => {
     },
     blur: {
       active: true,
-      amount: 100, // How much the blur is. 0-inf
+      amount: 10, // How much the blur is. 0-inf
       hq: true, // This solves ClearType pixel problem, makes content hq. Unfortunately it is pretty process intense
       offset: 0.9, // Offset for when hq kicks in
     },
     opacity: {
       active: true,
       amount: 1, // How much opacity between 0-1
-    },
-    snap: {
-      active: true,
-      bound: {
-        front: 50, // How far infront it will snap to element.
-        back: 5, // How far in the back it will snap back to element.
-      },
-      wait: 50, // Time in ms before snap is executed
     },
   };
   const config = { ...defaultOptions, ...options };
@@ -36,8 +28,6 @@ const Hyperspace3D = (options, selector = '#hs') => {
   const element = document.querySelector(selector);
   let windowHeight = calcWindowHeight();
   let viewBound = calcViewBound(element);
-  const scrollTimeout = [];
-  let snapScrolling = false;
 
   // Declare functions
   const handleConfigAuto = () => {
@@ -83,7 +73,7 @@ const Hyperspace3D = (options, selector = '#hs') => {
     }
 
     // Do all configs that require element children loop at the same time to boost performance
-    if ((config.blur.active && config.blur.amount > 0 && config.blur.hq === true) || (config.snap.active)) {
+    if ((config.blur.active && config.blur.amount > 0 && config.blur.hq === true)) {
       const { children } = element.querySelector(
         `${selector} > *[hs=container] > *[hs=scene]`,
       );
@@ -99,20 +89,6 @@ const Hyperspace3D = (options, selector = '#hs') => {
             child.style.filter = 'none';
           }
         }
-        // Snap to element
-        if (config.snap.active) {
-          const position = index * 100;
-          if (scrollTimeout[index]) clearTimeout(scrollTimeout[index]);
-          if (
-            position - config.snap.bound.front <= cameraZ
-            && position + config.snap.bound.back >= cameraZ
-            && snapScrolling !== true
-          ) {
-            scrollTimeout[index] = setTimeout(() => {
-              scrollToIndex(index);
-            }, config.snap.wait);
-          }
-        }
       });
     }
   };
@@ -123,13 +99,6 @@ const Hyperspace3D = (options, selector = '#hs') => {
       top,
       behavior: 'smooth',
     });
-    if (config.snap.active) {
-      // Prevent activating new snap from itself
-      snapScrolling = true;
-      setTimeout(() => {
-        snapScrolling = false;
-      }, config.snap.wait);
-    }
   };
 
   // Actions
