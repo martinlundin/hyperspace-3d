@@ -3,5 +3,6 @@
 *.code-workspace
 .cache
 npm-debug.log
+.DS_Store
 
 dist

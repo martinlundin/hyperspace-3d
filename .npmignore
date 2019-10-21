@@ -3,6 +3,7 @@
 *.code-workspace
 .cache
 npm-debug.log
+.DS_Store
 
 .eslintrc.js
 demo
