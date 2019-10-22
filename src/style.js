@@ -11,9 +11,15 @@ const createElementStyle = (selector, config) => {
 
   Array.from(children).forEach((child, index) => {
     child.style.transform = `translateZ(calc(${index} * -100vh))`;
-    child.style.filter = `blur( calc( (${index} * ${config.blur.amount}px) - (var(--blur) * 1px) ) )`;
-    child.style.opacity = `calc( 1 + (${index} * -${config.opacity.amount}) + (var(--opacity)))`;
     child.style.zIndex = 1000 - index;
+
+    if (config.blur.active) {
+      child.style.filter = `blur( calc( (${index} * ${config.blur.amount}px) - (var(--blur) * 1px) ) )`;
+      child.style.willChange = 'filter';
+    }
+    if (config.opacity.active) {
+      child.style.opacity = `calc( 1 + (${index} * -${config.opacity.amount}) + (var(--opacity)))`;
+    }
   });
 
   const height = children.length * 100;
@@ -44,7 +50,6 @@ const createCSS = (selector, config) => {
         left: 0;
         perspective: ${config.space.amount}vh;
         perspective-origin: 50%;
-        will-change: perspective-origin;
         transform: translate3d(0, 0, 0);
     }
 
