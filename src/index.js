@@ -79,15 +79,13 @@ const Hyperspace3D = (options, selector = '#hs') => {
       );
       Array.from(children).forEach((child, index) => {
         // Blur HQ
-        if (config.blur.active && config.blur.amount > 0 && config.blur.hq === true) {
-          const blurStop = index * (config.blur.amount - config.blur.offset);
-          if (blur < blurStop) {
-            if (child.style.filter === 'none') {
-              child.style.filter = `blur( calc( (${index} * ${config.blur.amount}px) - (var(--blur) * 1px) ) )`;
-            }
-          } else {
-            child.style.filter = 'none';
+        const blurStop = index * (config.blur.amount - config.blur.offset);
+        if (blur < blurStop) {
+          if (child.style.filter === 'none') {
+            child.style.filter = `blur( calc( (${index} * ${config.blur.amount}px) - (var(--blur) * 1px) ) )`;
           }
+        } else {
+          child.style.filter = 'none';
         }
       });
     }
