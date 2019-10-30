@@ -1,8 +1,16 @@
-# Hyperspace 3D (Alpha)
-*"Traveling through hyperspace ain't like dusting crops, boy! Without precise calculations we could fly right through a star or bounce too close to a supernova, and that'd end your trip real quick, wouldn't it?"*
+<h1 align="center">
+	Hyperspace
+</h1>
+<h3 align="center">
+  Activate the third dimension
+</h3>
+<p align="center">
+<i>"Traveling through hyperspace ain't like dusting crops, boy! Without precise calculations we could fly right through a star or bounce too close to a supernova, and that'd end your trip real quick, wouldn't it?"</i> -Han Solo
+</p>
 
-Well, with this library we have taken care of the calculations to make it abit easier for you.
+---
 
+## :speech_balloon: Information
 **Hyperspace 3D** adds another dimension to your site. It simply enables for scrolling on the z-axis, making for an immersive experience. Instead of going down along the page like normal, we go into it.
 
 **Accesibility is key.** This projects does NOT use any WebGL or canvas. This is basic HTML, CSS and JS. All content will be indexable by the search engines and screen readers.
@@ -11,23 +19,19 @@ Well, with this library we have taken care of the calculations to make it abit e
 **The project is currently in Alpha phase, report any bugs you might find. Please don't use in production yet, unless you keep up with the development.**
 
 **Install:** 
-Add hyperspace-3d to your project. Choose one of the following.
+Add **hyperspace-3d** to your project. Choose one of the following.
 - `yarn add hyperspace-3d`<br/>
 - `npm install hyperspace-3d --save`<br/>
 
 **Basic usage:**
 Javascript
-```
+```js
 import Hyperspace3D from 'hyperspace-3d'
 
-const options = {
-
-}
-
-Hyperspace3D(options)
+Hyperspace3D()
 ```
 HTML
-```
+```html
 <div id="hs">
     <div hs="container">
         <div hs="scene">
@@ -46,6 +50,31 @@ HTML
 </div>
 ```
 
+**Advanced Usage:**
+```js
+ const options = {
+    space: {
+      amount: 50, // How much the space between sections are. 1-100
+      extra: 'auto', // Space after last element. 'auto' detect if element is last, then it is false, otherwise true
+    },
+    bound: {
+      padding: 100, // Padding of bound, in pixels. This is to prevent element sticking if user scrolls away fast
+    },
+    blur: {
+      active: true,
+      amount: 10, // How much the blur is. 0-inf
+      hq: true, // This solves ClearType pixel problem, makes content hq. Unfortunately it is pretty process intense
+      offset: 0.9, // Offset for when hq kicks in
+    },
+    opacity: {
+      active: true,
+      amount: 1, // How much opacity between 0-1
+    },
+  };
+  const selector = "#custom-id"
+  Hyperspace3D(options, selector)
+```
+
 ---
 
 ## :raised_hands: Contribute
@@ -62,15 +91,14 @@ You are very welcome to contribute to the project.
 | :--------: | ----------------- | :----:
 | 0.0.1      | 2019-10-16        | :white_check_mark:
 | 0.1.0      | 2019-10-20        | :white_check_mark:
-| 0.2.0      | 2019-11-01        | :soon:
+| 0.2.0      | 2019-11-11        | :soon:
 
 #### Feature status
 
 ##### Version 0.2.0
 | Status             | Description
 | :----------------: | ----------------
-| :x:                | Preformance improvments
-| :x:                | Set final defaultOptions
+| :white_check_mark: | Set final defaultOptions
 | :x:                | Add multiple demos promoting the library
 | :x:                | Add CDN hosting
 
