@@ -1,6 +1,6 @@
 {
   "name": "hyperspace-3d",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "description": "Javascript library for activating the z-axis and start scrolling in 3D",
   "source": "src/index.js",
   "main": "dist/hyperspace-3d.js",

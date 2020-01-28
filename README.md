@@ -30,6 +30,13 @@ import Hyperspace3D from 'hyperspace-3d'
 
 Hyperspace3D()
 ```
+Note, if you use a framework remember to call the Hyperspace3D after the HTML is rendered, **example for React**
+```js
+React.useEffect(()=> {
+  Hyperspace3D()
+}, [])
+```
+
 HTML
 ```html
 <div id="hs">
@@ -91,7 +98,8 @@ You are very welcome to contribute to the project.
 | :--------: | ----------------- | :----:
 | 0.0.1      | 2019-10-16        | :white_check_mark:
 | 0.1.0      | 2019-10-20        | :white_check_mark:
-| 0.2.0      | 2019-11-11        | :soon:
+| 0.1.1      | 2020-01-28        | :white_check_mark:
+| 0.2.0      | :question:        | :soon:
 
 #### Feature status
 
