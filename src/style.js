@@ -1,6 +1,6 @@
-const createStyle = (selector, config) => {
-  createCSS(selector, config);
+const createStyle = (selector, config, callback) => {
   createElementStyle(selector, config);
+  createCSS(selector, config, callback);
 };
 
 const createElementStyle = (selector, config) => {
@@ -27,7 +27,7 @@ const createElementStyle = (selector, config) => {
   element.style.height = `calc(${height}vh + ${extra}vh)`;
 };
 
-const createCSS = (selector, config) => {
+const createCSS = (selector, config, callback) => {
   const css = `
     ${selector} *{
       margin: 0;
@@ -82,6 +82,7 @@ const createCSS = (selector, config) => {
   styleSheet.type = 'text/css';
   styleSheet.innerHTML = css;
   document.head.appendChild(styleSheet);
+  callback();
 };
 
 export default createStyle;

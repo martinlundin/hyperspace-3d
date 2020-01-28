@@ -101,7 +101,9 @@ const Hyperspace3D = (options, selector = '#hs') => {
 
   // Actions
   handleConfigAuto();
-  createStyle(selector, config);
+  createStyle(selector, config, () => {
+    viewBound = calcViewBound(element);
+  });
 
   // Listen on scroll and dispatch one event to get everything loaded properly
   window.addEventListener('scroll', handleScroll);
