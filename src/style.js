@@ -69,12 +69,10 @@ const createCSS = (selector, config, callback) => {
         position: absolute;
         top: 0;
         left: 0;   
-        border:5px solid black;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        background:rgba(0,0,0,0.2)
     }
   `;
 

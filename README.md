@@ -99,6 +99,7 @@ You are very welcome to contribute to the project.
 | 0.0.1      | 2019-10-16        | :white_check_mark:
 | 0.1.0      | 2019-10-20        | :white_check_mark:
 | 0.1.1      | 2020-01-28        | :white_check_mark:
+| 0.1.2      | 2020-01-30        | :white_check_mark:
 | 0.2.0      | :question:        | :soon:
 
 #### Feature status
