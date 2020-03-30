@@ -4,9 +4,6 @@
 <h3 align="center">
   Activate the third dimension
 </h3>
-<p align="center">
-<i>"Traveling through hyperspace ain't like dusting crops, boy! Without precise calculations we could fly right through a star or bounce too close to a supernova, and that'd end your trip real quick, wouldn't it?"</i> -Han Solo
-</p>
 
 ---
 
@@ -14,6 +11,8 @@
 **Hyperspace 3D** adds another dimension to your site. It simply enables for scrolling on the z-axis, making for an immersive experience. Instead of going down along the page like normal, we go into it.
 
 **Accesibility is key.** This projects does NOT use any WebGL or canvas. This is basic HTML, CSS and JS. All content will be indexable by the search engines and screen readers.
+
+**<a href="https://fokusiv.com">See example of usage</a>**
 
 ## :scroll: Instructions
 **The project is currently in Alpha phase, report any bugs you might find. Please don't use in production yet, unless you keep up with the development.**
