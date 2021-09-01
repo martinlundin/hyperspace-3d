@@ -90,7 +90,7 @@ You are very welcome to contribute to the project.
 1. Clone this project from git, in terminal run `git clone https://github.com/martinlundin/hyperdrive`
 1. In terminal go to the project root and run `npm install` or `yarn install`
 1. To run developer mode with demo `npm run dev` or `yarn dev`
-1. When you are finnished with the new version `npm run build` or `yarn build`
+1. When you are finished with the new version `npm run build` or `yarn build`
 
 ### :snail: Roadmap
 | Version    | Estimated release | Status
